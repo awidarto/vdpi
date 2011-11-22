@@ -1,0 +1,17 @@
+INSTALLATION
+
+1. import sql/vdpi_db.sql into mysql, create vdpi_db database first
+2. set proper database credentials in application/config/databases.php
+3. that's it !
+
+CRON SETUP
+
+The aggregates table needs to be populated periodically using cron task. the script is actually CI's controller accessed from CLI.
+
+1. Aggregates table insert script :
+script path :
+{VDPI GUI INSTALL_DIR}/index.php vdaemon agg
+
+CRON entry example :
+*/60 * * * /usr/bin/php /var/www/vdpi/index.php vdaemon agg
+
