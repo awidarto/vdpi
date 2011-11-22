@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+ 
+<head> 
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
+	<title>Widgets | Dashboard Admin</title> 
+	
+	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/text.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/form.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/buttons.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/grid.css" type="text/css" media="screen" title="no title" />	
+	<link rel="stylesheet" href="../css/layout.css" type="text/css" media="screen" title="no title" />	
+	
+	<link rel="stylesheet" href="../css/ui-darkness/jquery-ui-1.8.12.custom.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/plugin/jquery.visualize.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/plugin/facebox.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/plugin/uniform.default.css" type="text/css" media="screen" title="no title" />
+	<link rel="stylesheet" href="../css/plugin/dataTables.css" type="text/css" media="screen" title="no title" />
+	
+	<link rel="stylesheet" href="../css/custom.css" type="text/css" media="screen" title="no title" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head> 
+ 
+<body> 
+
+<div id="wrapper">
+	
+	<div id="top">
+		
+		<div class="content_pad">			
+			<ul class="right">
+				<li><a href="" class="top_icon"><span class="ui-icon ui-icon-person"></span>Logged in as John Doe</a></li>
+				<li><a href="" class="new_messages top_alert">1 New Message</a></li>
+				<li><a href="./settings.html">Settings</a></li>
+				<li><a href="../index.html">Logout</a></li>
+			</ul>
+		</div> <!-- .content_pad -->
+		
+	</div> <!-- #top -->	
+	
+	<div id="header">
+		
+		<div class="content_pad">
+			<h1><a href="../dashboard.html">Dashboard Admin</a></h1>
+			
+			<ul id="nav">
+				<li class="nav_icon"><a href="../dashboard.html"><span class="ui-icon ui-icon-home"></span>Home</a></li>
+
+				<li class="nav_dropdown nav_icon">
+					<a href=""><span class="ui-icon ui-icon-gripsmall-diagonal-se"></span>Styles</a>
+					
+					<div class="nav_menu">			
+						<ul>
+							<li><a href="./text.html">Buttons &amp; Text</a></li>	
+							<li><a href="./grid.html">Grid Layout</a></li>	
+							<li><a href="./tables.html">Tables</a></li>	
+							<li><a href="./forms.html">Forms</a></li>	
+							<li><a href="./charts.html">Charts</a></li>						
+						</ul>
+						
+					</div>
+				</li>
+				
+				<li class="nav_current nav_icon"><a href="./widgets.html"><span class="ui-icon ui-icon-gear"></span>Widgets</a></li>
+				<li class="nav_icon"><a href="./reports.html"><span class="ui-icon ui-icon-signal"></span>Reports</a></li>
+				
+				<li class="nav_dropdown nav_icon_only">
+					<a href="">&nbsp;</a>
+					
+					<div class="nav_menu">
+						
+						<ul>
+							<li><a href="">Overflow Menu</a></li>
+							<li><a href="">Items Can</a></li>
+							<li><a href="">Go Here</a></li>
+						</ul>
+					</div> <!-- .menu -->
+				</li>
+			</ul>
+		</div> <!-- .content_pad -->
+		
+	</div> <!-- #header -->	
+	
+	<div id="masthead">
+		
+		<div class="content_pad">
+			
+			<h1 class="">Widgets</h1>
+			
+			<div id="bread_crumbs">
+				<a href="../dashboard.html">Home</a> / 
+				<a href="" class="current_page">Widgets</a>				
+			 </div> <!-- #bread_crumbs -->
+			
+			<div id="search">
+				<form action="http://madebyamp.com/search" method="get" />
+					<input type="text" value="" placeholder="Search" name="search" id="search_input" title="Search" />					
+					<input type="submit" value="" name="submit" class="submit" />					
+				</form>
+			</div> <!-- #search -->
+			
+		</div> <!-- .content_pad -->
+		
+	</div> <!-- #masthead -->	
+	
+	<div id="content" class="xgrid">
+		
+		<div class="x6">
+			
+			
+			
+			<h3>Datepicker</h3>
+			<div id="datepicker"></div>
+
+			
+		</div> <!-- .x6 -->
+		
+		<div class="x6">
+			
+			<h3>Facebox Modal</h3>
+			
+			<a href="#facebox_content" rel="facebox" class="btn btn-small btn-orange">Open Modal Window</a>
+			
+			
+			<div id="facebox_content" style="display: none">
+			
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>	
+				
+			</div>
+			
+			<br /><br />
+			<br />
+			
+			<h3>Progress Bar</h3>
+			<div id="progressbar"></div>
+			
+			<br />
+			<br />
+			
+			<h3>Slider</h3>
+			
+			<p>
+				<label for="amount">Price range:</label>
+				<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+			</p>
+			
+			<div id="slider-range"></div>
+
+			
+		</div> <!-- .x6 -->
+		
+		
+		
+		
+		
+		
+		<div class="xbreak"></div> <!-- .xbreak -->
+		
+		
+
+		<div class="x6">
+				
+				<h3>Tabs</h3>
+				
+				
+ 
+				<div class="tab_container">
+				    <ul class="tabs"> 
+				        <li><a href="#tab1">Tab #1</a></li> 
+				        <li><a href="#tab2">Tab #2</a></li> 
+				        <li><a href="#tab3">Tab #3</a></li> 
+				        <li><a href="#tab4">Tab #4</a></li> 
+				    </ul> 
+				    
+				    <div class="tab_content_container"> 
+				    	
+				        <div id="tab1" class="tab_content"> 
+				        	
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>				            
+				            
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				        </div> <!-- #tab1 -->
+				        
+				        <div id="tab2" class="tab_content"> 
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>				            
+				            
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				        </div> <!-- #tab2 -->
+				        
+				        <div id="tab3" class="tab_content"> 
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>				            
+				            
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				        </div> <!-- #tab3 -->
+				        
+				        <div id="tab4" class="tab_content"> 
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>				            
+				            
+				            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				        </div> <!-- #tab4 -->
+				        
+				    </div> 
+    
+				</div> <!-- .tab_container -->
+ 				
+
+
+		</div> <!-- .x6 -->
+		
+		
+		<div class="x6">
+				
+				<h3>Accordion</h3>
+				
+				<div class="accordion_container">
+					<h2 class="accordion_panel"><a href="#">Panel #1</a></h2> 
+					
+					<div class="accordion_content"> 
+					            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>	
+					            
+					            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>	            
+					</div> <!-- .accordion_content -->
+					
+					<h2 class="accordion_panel"><a href="#">Panel #2</a></h2> 
+					
+					<div class="accordion_content"> 
+					            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					            	
+					            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>			            
+					</div> <!-- .accordion_content -->
+					
+					<h2 class="accordion_panel"><a href="#">Panel #3</a></h2> 
+					
+					<div class="accordion_content"> 
+					            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>	
+					            
+					            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>			            
+					</div> <!-- .accordion_content -->
+					
+					<h2 class="accordion_panel"><a href="#">Panel #4</a></h2> 
+					
+					<div class="accordion_content"> 
+					            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>	
+					            
+					            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>			            
+					</div> <!-- .accordion_content -->
+
+				</div> <!-- .accordion_container -->
+			
+		</div> <!-- .x6 -->
+		
+	</div> <!-- #content -->
+	
+	<div id="footer">		
+		<div class="content_pad">			
+			<p>&copy; 2010-11 Copyright <a href="http://madebyamp.com/">MadeByAmp</a>. Powered by <a href="../index.html">Dashboard Admin</a>.</p>
+		</div> <!-- .content_pad -->
+	</div> <!-- #footer -->		
+	
+</div> <!-- #wrapper -->
+
+<script src="../js/jquery/jquery-1.5.2.min.js"></script>
+<script src="../js/jquery/jquery-ui-1.8.12.custom.min.js"></script>
+<script src="../js/misc/excanvas.min.js"></script>
+<script src="../js/jquery/facebox.js"></script>
+<script src="../js/jquery/jquery.visualize.js"></script>
+<script src="../js/jquery/jquery.dataTables.min.js"></script>
+<script src="../js/jquery/jquery.tablesorter.min.js"></script>
+<script src="../js/jquery/jquery.uniform.min.js"></script>
+<script src="../js/jquery/jquery.placeholder.min.js"></script>
+
+<script src="../js/widgets.js"></script>
+<script src="../js/dashboard.js"></script>
+
+<script>
+	
+$(document).ready ( function () 
+{
+	Dashboard.init ();			
+		
+	$('.accordion_container').accordion ();
+
+	$('.tab_container').tabs ();	
+	
+	$('#datepicker').datepicker();
+	
+	$( "#progressbar" ).progressbar({ value: 59 });
+		
+	$('#slider-range').slider({
+		range: true,
+		min: 0,
+		max: 500,
+		values: [ 75, 300 ],
+		slide: function( event, ui ) {
+			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+		}
+	});
+	
+	$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+});
+
+</script>
+
+</body> 
+ 
+</html>
