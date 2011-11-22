@@ -177,7 +177,7 @@ class Vdpi extends Admin_Controller {
 		$selections = array();
 		foreach($menu_table as $key=>$val){
 			foreach($val['columns'] as $key=>$val){
-				$selections[$key] = $val; 
+				$selections[$val] = $key; 
 			}
 		}
 		return form_dropdown('column_name',array_unique($selections));
@@ -188,7 +188,7 @@ class Vdpi extends Admin_Controller {
 		$selections = array();
 		foreach($menu_table as $key=>$val){
 			foreach($val['columns'] as $key=>$val){
-				$selections[$key] = $val; 
+				$selections[$val] = $key; 
 			}
 		}
 		return form_dropdown('column_name',array_unique($selections),$value);
@@ -247,9 +247,11 @@ class Vdpi extends Admin_Controller {
 
 		$crud->set_subject('Periodical Reports');
 		
-		$crud->columns('periodical_name','script_name');
+		$crud->columns('periodical_name','controller','action','param');
 		$crud->display_as('periodical_name','Name')
-			->display_as('script_name','Script Name');
+			->display_as('controller','Controller')
+			->display_as('action','Action')
+			->display_as('param','Parameter');
 
 		$output = $crud->render(); 
 

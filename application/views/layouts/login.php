@@ -18,7 +18,7 @@
 		<? if (@$error): ?>
             <h3 style="color:red"><?php print  $error ?></h3>
         <? endif; ?>
-        <?php echo form_open() ?>	
+        <?php print form_open() ?>	
 			<div class="login_fields">
 				<div class="field">
 					<label for="email">Email</label>
@@ -34,7 +34,7 @@
 			<div class="login_actions">
 				<button type="submit" class="btn btn-orange" tabindex="3">Login</button>
 			</div>
-        <?php echo form_close() ?>	
+        <?php print form_close() ?>	
 	</div> <!-- #login_panel -->		
 </div> <!-- #login -->
 

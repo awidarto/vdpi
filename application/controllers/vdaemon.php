@@ -44,8 +44,8 @@ class vdaemon extends CI_Controller{
 		    'protocol' => 'smtp',
 		    'smtp_host' => get_setting('smtp_server'),
 		    'smtp_port' => get_setting('smtp_port'),
-		    'smtp_user' => 'bolongsox',
-		    'smtp_pass' => 'masukajadeh',
+		    'smtp_user' => get_setting('smtp_user'),
+		    'smtp_pass' => get_setting('smtp_pass'),
 		    'charset'   => 'iso-8859-1'
 		);
 		
@@ -65,6 +65,9 @@ class vdaemon extends CI_Controller{
 		
 	}
 	
+	function report(){
+		
+	}
 }
 
 ?>
