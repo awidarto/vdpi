@@ -18,7 +18,7 @@
 		<? if (@$error): ?>
             <h3 style="color:red"><?php print  $error ?></h3>
         <? endif; ?>
-        <?php print form_open() ?>	
+        <?php print form_open('front/login') ?>	
 			<div class="login_fields">
 				<div class="field">
 					<label for="email">Email</label>
