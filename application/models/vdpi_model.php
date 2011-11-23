@@ -14,11 +14,11 @@ class vdpi_Model  extends CI_Model  {
 		return $this->db->get($table);
 	}
 
-	function getCountFromTable($table,$column,$where){
+	function getCountFromTable($table,$column = '*',$where){
 		if(!is_null($where)){
 			$this->db->where($where);
 		}
-		$this->db->select_count($column);
+		$this->db->count_all($column);
 		return $this->db->get($table);
 	}
 
