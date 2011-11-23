@@ -36,7 +36,7 @@ class Front extends Public_Controller{
             if($this->ion_auth->login($identity,$password)) 
             {
                 // send on to protected area ('user' controller)
-                redirect('admin/home','location');
+                redirect('admin/home','refresh');
             }
             else // incorrect creds
             {

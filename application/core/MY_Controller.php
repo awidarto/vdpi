@@ -50,7 +50,7 @@ class Admin_Controller extends CI_Controller {
             //Load $the_user in all views
             $this->load->vars($data);
         } else {
-            redirect('/');
+            redirect('/','refresh');
         }
 	}
 
@@ -77,7 +77,7 @@ class User_Controller extends CI_Controller {
             $this->load->vars($data);
         }
         else {
-            redirect('/');
+            redirect('/','refresh');
         }
     }
 }
