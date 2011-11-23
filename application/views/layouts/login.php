@@ -4,7 +4,7 @@
  
 <head> 
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
-	<title>Login | Jayon Express Admin</title> 
+	<title>Login | VDPI Manager</title> 
 	
 	<?php $this->tf_assets->render_css(); ?>
 
