@@ -39,7 +39,7 @@ class Admin_Controller extends CI_Controller {
         parent::__construct();
 
         //Check if user is in admin group
-        if ( $this->ion_auth->is_admin() ) {
+        if ( $this->ion_auth->logged_in() ) {
                         
             //Put User in Class-wide variable
             $this->the_user = $this->ion_auth->user()->row();
