@@ -11,7 +11,7 @@ class vdaemon extends CI_Controller{
 	function agg(){
 		set_time_limit(0);
 		while(1){
-			$this->db->reconnect();
+			//$this->db->reconnect();
 			$tables = array_merge($this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_content_menu'),$this->config->item('vdpi_application_menu'));
 			foreach($tables as $key=>$val){
 				$table = $key;
@@ -37,7 +37,7 @@ class vdaemon extends CI_Controller{
 					}
 				}
 			}
-			$this->db->close();
+			//$this->db->close();
 			sleep(10);
 		}
 	}
