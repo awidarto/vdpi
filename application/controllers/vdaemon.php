@@ -9,31 +9,36 @@ class vdaemon extends CI_Controller{
     }
 	
 	function agg(){
-		
-		$tables = array_merge($this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_content_menu'),$this->config->item('vdpi_application_menu'));
-		foreach($tables as $key=>$val){
-			$table = $key;
-			$query = $this->db->query('SELECT * FROM '.$table.' WHERE aggd = 0');
-			if($query->num_rows() > 0){
-				$rows = $query->result_array();
-				foreach($rows as $row){
-					print_r($row);
-					$data = $row;
-					$data['packet_type'] = $table;
-					unset($data['id']);
-					unset($data['aggd']);
-					$ins = $this->db->insert('aggregates',$data);
-					if($ins){
-						$this->db->where('id', $row['id']);
-						$upd = $this->db->update($table, array('aggd'=>1));
-						if($upd){
-							print "data updated\r\n";
-						}else{
-							print "failed to update\r\n";
+		set_time_limit(0);
+		while(1){
+			$this->db->reconnect();
+			$tables = array_merge($this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_content_menu'),$this->config->item('vdpi_application_menu'));
+			foreach($tables as $key=>$val){
+				$table = $key;
+				$query = $this->db->query('SELECT * FROM '.$table.' WHERE aggd = 0');
+				if($query->num_rows() > 0){
+					$rows = $query->result_array();
+					foreach($rows as $row){
+						print_r($row);
+						$data = $row;
+						$data['packet_type'] = $table;
+						unset($data['id']);
+						unset($data['aggd']);
+						$ins = $this->db->insert('aggregates',$data);
+						if($ins){
+							$this->db->where('id', $row['id']);
+							$upd = $this->db->update($table, array('aggd'=>1));
+							if($upd){
+								print "data updated\r\n";
+							}else{
+								print "failed to update\r\n";
+							}
 						}
 					}
 				}
 			}
+			$this->db->close();
+			sleep(10);
 		}
 	}
 	
