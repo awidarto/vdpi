@@ -41,6 +41,8 @@ class Users extends Admin_Controller {
 		$crud->set_subject('User');
 
 		$crud->columns('username','email','first_name','last_name','active','group_id');
+		$crud->add_fields('username','email','password','first_name','last_name','group_id');
+		$crud->edit_fields('username','email','password','first_name','last_name','group_id');
 		$crud->display_as('username','Username')
 			->display_as('email','Email')
 			->display_as('first_name','First Name')
@@ -50,7 +52,9 @@ class Users extends Admin_Controller {
 		
 		$crud->required_fields('first_name','last_name');
 		
-		$crud->callback_before_insert('pass_new');
+		$crud->callback_before_insert(array($this,'pre_insert_user'));
+		$crud->callback_before_update(array($this,'pre_update_user'));
+		$crud->callback_edit_field('password',array($this,'update_pass_field'));
 		
 		$output = $crud->render();
         $this->tf_assets->add_data('output', $output);
@@ -59,12 +63,37 @@ class Users extends Admin_Controller {
         
     }
 
-	function pass_new($data){
+	function checking_post_code($post_array)
+	{
+	    if(empty($post_array['postalCode']))
+	    {
+	        $post_array['postalCode'] = 'Not U.S.';
+	    }
+	    return $post_array;
+	}
+
+	function pre_insert_user($post_array){
 		$this->load->model('ion_auth_model');
-		$data['salt'] = $this->ion_auth_model->salt();
-		$data['password'] = $this->ion_auth_model->hash_password($data['password'], $data['salt']);
-		
-		return $data;
+		$post_array['salt'] = $this->ion_auth_model->salt();
+		$post_array['password'] = $this->ion_auth_model->hash_password($post_array['password'], $post_array['salt']);
+		$post_array['active'] = 1;
+		return $post_array;
+	}
+
+	function pre_update_user($post_array){
+		$this->load->model('ion_auth_model');
+		if($post_array['password'] != ''){
+			$post_array['salt'] = $this->ion_auth_model->salt();
+			$post_array['password'] = $this->ion_auth_model->hash_password($post_array['password'], $post_array['salt']);
+		}else{
+			unset($post_array['salt']);
+			unset($post_array['password']);
+		}
+		return $post_array;
+	}
+	
+	function update_pass_field($value,$primary_key){
+		return '<input name=\'password\' type=\'text\' value=\'\' maxlength=\'40\' />';
 	}
     
     function admins() {
