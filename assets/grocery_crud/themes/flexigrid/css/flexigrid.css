@@ -96,8 +96,7 @@ table th
 	background:url(images/wbg.gif) repeat-x 0px -1px;
 }
 .flexigrid div.mDiv {
-	/*background:url(images/wbg.gif) repeat-x top;*/
-	background-color:#f1f1f1;
+	background:url(images/wbg.gif) repeat-x top;
 	border:1px solid #ccc;
 	border-bottom:0px;
 	border-top:0px;
@@ -215,8 +214,7 @@ table th
 }
 .flexigrid table tr.hDiv
 {
-	background-color:#c3c3c3; 
-	/*url(images/fhbg.gif) repeat-x bottom;*/
+	background:#fafafa url(images/fhbg.gif) repeat-x bottom;
 	position:relative;
 	border:1px solid #ccc;
 	border-bottom:0px;
@@ -277,7 +275,7 @@ table th
 .flexigrid div.form-div select
 {
 	font-size: 15px;
-	border: thin solid #AAA;
+	border: 1px solid #AAA;
 	padding: 5px 5px 5px 5px;
 	background: #fafafa;
 }
@@ -285,19 +283,19 @@ table th
 {
 	padding-right: 10px;	
 }
-.flexigrid div.form-div input[type=text]
+.flexigrid div.form-div input[type=text], .flexigrid div.form-div input[type=password]
 {
-	font-size: 12px;
+	font-size: 15px;
 	width: 500px;	
-	height:18px;
-	border: thin solid #AAA;
-	padding: 2px;
+	height:20px;
+	border: 1px solid #AAA;
+	padding: 5px 5px 5px 5px;
 	background: #fafafa;
 }
 .flexigrid div.form-div textarea
 {
 	font-size: 15px;
-	border: thin solid #AAA;
+	border: 1px solid #AAA;
 	padding: 5px 5px 5px 5px;
 	background: #fafafa;
 }
@@ -306,7 +304,7 @@ table th
 .flexigrid div.form-div input[type=text]:hover, .flexigrid div.form-div input[type=text]:focus,
 .flexigrid div.form-div select:hover, .flexigrid div.form-div select:focus
 {
-	border: thin solid #444;
+	border: 1px solid #444;
 	background: #fff;
 }
 div.form-div input.datepicker-input
@@ -526,14 +524,12 @@ div.colCopy {
 }
 /* end novstripe */
 .flexigrid div.pDiv {
-	/*background:url(images/wbg.gif) repeat-x 0 -1px;*/
-	background-color: #f1f1f1;
-	border:thin solid #ccc;
+	background:url(images/wbg.gif) repeat-x 0 -1px;
+	border:1px solid #ccc;
 	border-top:0px;
 	overflow:hidden;
 	white-space:nowrap;
 	position:relative;
-	padding-bottom:10px;
 }
 .flexigrid div.pDiv div.pDiv2 {
 	margin:3px;
@@ -555,7 +551,7 @@ div.pGroup {
 .flexigrid div.pDiv input {
 	vertical-align:text-top;
 	position:relative;
-	top:-13px;
+	top:-5px;
 }
 .flexigrid div.pDiv div.pButton {
 	float:left;
