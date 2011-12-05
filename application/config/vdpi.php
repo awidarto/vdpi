@@ -16,6 +16,15 @@
 * Original Author name has been kept but that does not mean that the method has not been modified.
 * 
 */
+	$config['backup_dir'] = '/Applications/XAMPP/htdocs/vdpi/dbbackup/'; //modify this according to system
+	
+	$config['backup_prefs'] = array(
+	                'format'      => 'txt',             // gzip,txt
+	                'add_drop'    => TRUE,              // Whether to add DROP TABLE statements to backup file
+	                'add_insert'  => TRUE,              // Whether to add INSERT data to backup file
+	                'newline'     => "\n"               // Newline character used in backup file
+	              );
+	
 
 	/**
 	 * VDPI Menu Tables.

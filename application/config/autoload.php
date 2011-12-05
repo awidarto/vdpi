@@ -52,7 +52,7 @@ $autoload['packages'] = array(APPPATH.'third_party/ion_auth');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'session', 'xmlrpc','ion_auth','form_validation','tf_assets','grocery_CRUD');
+$autoload['libraries'] = array('database', 'session', 'xmlrpc','table','ion_auth','form_validation','tf_assets','grocery_CRUD');
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database', 'session', 'xmlrpc','ion_auth','form_
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form','url');
+$autoload['helper'] = array('form','url','file');
 
 
 /*

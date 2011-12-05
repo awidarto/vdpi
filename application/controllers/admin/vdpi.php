@@ -264,6 +264,21 @@ class Vdpi extends Admin_Controller {
 	}
 	
 	function dbbackup(){
+
+		$table_tpl = array(
+			'table_open' => '<table border="0" cellpadding="4" cellspacing="0" class="fileTable">'
+		);
+		$this->table->set_template($table_tpl);
+		
+		$files = get_filenames($this->config->item('backup_dir'));
+		
+		$this->table->set_heading(array('Backup File Name','Action'));
+		
+		foreach($files as $file){
+			$this->table->add_row($file,anchor('admin/restore/'.$file,'Restore'));
+		}
+		
+		$this->tf_assets->add_data('files', $files);
 		$this->tf_assets->set_content('dbbackup');
         $this->tf_assets->render_layout();
 	}

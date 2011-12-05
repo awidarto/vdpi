@@ -73,6 +73,20 @@ class vdaemon extends CI_Controller{
 	function report(){
 		
 	}
+	
+	function dbbackup(){
+		$this->load->dbutil();
+		$prefs = $this->config->item('backup_prefs');
+		$backup =& $this->dbutil->backup($prefs); 
+		
+		if($prefs['format'] == 'gzip'){
+			$ext = '.tgz';
+		}else if($prefs['format'] == 'txt'){
+			$ext = '.sql';
+		}
+		
+		write_file($this->config->item('backup_dir').'backup_'.time().$ext, $backup);
+	}
 }
 
 ?>
