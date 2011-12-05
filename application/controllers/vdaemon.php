@@ -85,7 +85,14 @@ class vdaemon extends CI_Controller{
 			$ext = '.sql';
 		}
 		
+		$filename = 'backup_'.time().$ext;
+		
 		write_file($this->config->item('backup_dir').'backup_'.time().$ext, $backup);
+		
+		$fileinfo = array('filename'=>$filename);
+		
+		$this->db->insert('backups',$fileinfo);
+		
 	}
 }
 

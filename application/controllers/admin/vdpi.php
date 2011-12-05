@@ -264,23 +264,27 @@ class Vdpi extends Admin_Controller {
 	}
 	
 	function dbbackup(){
+		
+		$crud = new grocery_CRUD();
 
-		$table_tpl = array(
-			'table_open' => '<table border="0" cellpadding="4" cellspacing="0" class="fileTable">'
-		);
-		$this->table->set_template($table_tpl);
+ 		$crud->set_theme('flexigrid');
+		$crud->set_table('backups');
+
+		$crud->set_subject('Back Up');
 		
-		$files = get_filenames($this->config->item('backup_dir'));
+		$crud->columns('id','created','filename');
+		$crud->display_as('created','Created')
+			->display_as('filename','Filename');
+
+ 		$crud->unset_add();
+ 		$crud->unset_edit();
+ 		$crud->unset_delete();
+
+		$output = $crud->render(); 
+		$this->tf_assets->add_data('output', $output);
+		$this->tf_assets->set_content('dash_content_table');
+		$this->tf_assets->render_layout();
 		
-		$this->table->set_heading(array('Backup File Name','Action'));
-		
-		foreach($files as $file){
-			$this->table->add_row($file,anchor('admin/restore/'.$file,'Restore'));
-		}
-		
-		$this->tf_assets->add_data('files', $files);
-		$this->tf_assets->set_content('dbbackup');
-        $this->tf_assets->render_layout();
 	}
 
 	function live($protocol,$column,$type,$lasttime = null,$interval = 0){
