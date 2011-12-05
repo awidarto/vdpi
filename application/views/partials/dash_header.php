@@ -17,6 +17,7 @@
 					$protocol_menu = $this->config->item('vdpi_protocol_menu');
 					$application_menu = $this->config->item('vdpi_application_menu');
 					$content_menu = $this->config->item('vdpi_content_menu');
+					$bandwidth_menu = $this->config->item('vdpi_bandwidth_menu');
 				?>
 				<li class="<?php print set_hilite('admin\/vdpi\/aggregates$')?> nav_icon"><a href="<?php print site_url('admin/vdpi/aggregates');?>"><span class="ui-icon ui-icon-signal"></span>Live Monitor</a></li>
 				<li class="nav_dropdown">
@@ -50,6 +51,16 @@
 					</div> <!-- .menu -->
 				</li>
 				<li class="nav_dropdown">
+					<a href="">Bandwidth</a>
+					<div class="nav_menu">
+						<ul>
+							<?php foreach($bandwidth_menu as $key=>$val):?>
+								<li class="<?php print set_hilite('admin\/applications\/'.$key.'$')?>"><a href="<?php print site_url('admin/applications/'.$key);?>"><span class="ui-icon ui-icon-transfer-e-w"></span><?php print $val['title']?></a></li>
+							<?php endforeach;?>
+						</ul>
+					</div> <!-- .menu -->
+				</li>
+				<li class="nav_dropdown">
 					<a href="">Administrator</a>
 					<div class="nav_menu">
 						<ul>
@@ -58,6 +69,7 @@
 							<li class="<?php print set_hilite('admin\/vdpi\/thresholds$')?> nav_icon"><a href="<?php print site_url('admin/vdpi/thresholds');?>"><span class="ui-icon ui-icon-signal"></span>Thresholds</a></li>
 							<li class="<?php print set_hilite('admin\/vdpi\/periodicals$')?> nav_icon"><a href="<?php print site_url('admin/vdpi/periodicals');?>"><span class="ui-icon ui-icon-signal"></span>Scheduler</a></li>
 							<li class="<?php print set_hilite('admin\/vdpi\/reports')?> nav_icon"><a href="<?php print site_url('admin/vdpi/reports');?>"><span class="ui-icon ui-icon-signal"></span>Reports</a></li>
+							<li class="<?php print set_hilite('admin\/vdpi\/dbbackup')?> nav_icon"><a href="<?php print site_url('admin/vdpi/dbbackup');?>"><span class="ui-icon ui-icon-signal"></span>Back Up</a></li>
 						</ul>
 					</div> <!-- .menu -->
 				</li>

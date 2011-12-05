@@ -32,8 +32,10 @@ class Applications extends Admin_Controller {
     function index($menu = 'webs') {
         $crud = new grocery_CRUD();
 		
-		$menu_table = array_merge($this->config->item('vdpi_content_menu'),$this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_application_menu'));
-
+		$menu_table = array_merge($this->config->item('vdpi_content_menu'),$this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_application_menu'),$this->config->item('vdpi_bandwidth_menu'));
+		
+		//print_r($menu_table[$menu]);
+		
  		$crud->set_theme('flexigrid');
  		$crud->set_table($menu_table[$menu]['table']);
 

@@ -80,7 +80,6 @@ class Vdpi extends Admin_Controller {
 			'capture_date',
 			'ip',
 			'mac',
-			'important',
 			'hostname',
 			'data_size',
 			'cname',
@@ -90,7 +89,6 @@ class Vdpi extends Admin_Controller {
 		$crud->display_as('packet_type','Traffic Type')
 			->display_as('capture_date','Timestamp')
 			->display_as('flow_info','Flow Info')
-			->display_as('important','Important')
 			->display_as('hostname','Host Name')
 			->display_as('cname','CNAME')
 			->display_as('ip','IP Address')
@@ -262,6 +260,11 @@ class Vdpi extends Admin_Controller {
 
 	function reports(){
 		$this->tf_assets->set_content('report');
+        $this->tf_assets->render_layout();
+	}
+	
+	function dbbackup(){
+		$this->tf_assets->set_content('dbbackup');
         $this->tf_assets->render_layout();
 	}
 

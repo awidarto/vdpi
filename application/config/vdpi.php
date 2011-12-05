@@ -47,7 +47,6 @@
 			'columns'=>array(
 				'Time'=>'capture_date',
 				'Flow'=>'flow_info',		 	 	 	 	 	 	 
-				'Important'=>'important', 	 	 	 	 	 	 
 				'Host Name'=>'hostname', 	 	 	 	 	 	 
 				'CNAME'=>'cname', 	 	 	 	 	 	 
 				'IP Address'=>'ip'
@@ -60,7 +59,6 @@
 				'Time'=>'capture_date',
 				'Flow'=>'flow_info',
 				'URL'=>'url',
-				'Important'=>'important',
 				'Username'=>'username',
 				'Password'=>'password',
 				'Command Path'=>'cmd_path',
@@ -104,7 +102,6 @@
 				'Time'=>'capture_date',
 				'Flow'=>'flow_info',
 				'URL'=>'url',
-				'Important'=>'important',
 				'Command Path'=>'cmd_path',
 				'Channel Number'=>'channel_num'
 			)
@@ -169,7 +166,6 @@
 			'columns'=>array(
 				'Time'=>'capture_date',
 				'Flow'=>'flow_info',
-				'Important'=>'important',
 				'Hostname'=>'hostname',
 				'Username'=>'username',
 				'Password'=>'password',
@@ -184,7 +180,6 @@
 				'Time'=>'capture_date',
 				'Flow'=>'flow_info',
 				'URL'=>'url',
-				'Important'=>'important',
 				'Command Path'=>'cmd_path',
 				'Upload'=>'upload_num',
 				'Download'=>'download_num'
@@ -229,7 +224,6 @@
 			'columns'=>array(
 				'Time'=>'capture_date',
 				'Flow'=>'flow_info',
-				'Important'=>'important',
 				'URL'=>'url',
 				'Content Type'=>'content_type',
 				'File Path'=>'file_path',
@@ -273,7 +267,6 @@
 				'Size'=>'data_size',
 				'Flow'=>'flow_info',
 				'Receive'=>'receive',
-				'Important'=>'important',
 				'Body'=>'only_body',
 				'Sender'=>'sender',
 				'Receiver'=>'receivers',
@@ -291,6 +284,66 @@
 		
 		
 	);
+	
+	$config['vdpi_bandwidth_menu'] = array(
+		'rtt'=>array(
+			'title'=>'RTT / Retransmit',
+			'table'=>'con_ret_rtt',
+			'columns'=>array(
+				
+				'Proto'=>'prot_type',	   	 	 	 	 	 	 	 
+				'Source'=>'src_addr',	   	 	 	 	 	 	 	 
+				'Destination'=>'dst_addr',	   	 	 	 	 	 	 	 
+				'Connection'=>'com_conn',	   	 	 	 	 	 	 	 
+				'1st Packet'=>'first_pkt',	   	 	 	 	 	 	 	 
+				'Last Packet'=>'last_pkt',	   	 	 	 	 	 	 	 
+				'Elapsed'=>'elpsd_time',	   	 	 	 	 	 	 	 
+				'Total Packet'=>'total_pkt',		 	 	
+			/*	
+				src_addr_pkt_sent	 	 	
+				dst_addr_pkt_sent	 	 	
+				src_addr_ack_sent	 	 	
+				dst_addr_ack_sent	 	 	
+				src_addr_actl_pkt	 	 	
+				dst_addr_actl_pkt	 	 	
+				src_addr_actl_byte	 	 	
+				dst_addr_actl_byte	 	 	
+				src_addr_ret_pkt	 	 	
+				dst_addr_ret_pkt	 	 	
+				src_addr_ret_byte	 	 	
+				dst_addr_ret_byte	 	 	
+				src_addr_syn_fin_sent			 	 	 	 	 	 	 
+				dst_addr_syn_fin_sent
+			*/			 	 	 	 	 	 	 
+				'Src Throughput'=>'src_addr_throughput',		 	 	 	
+				'Dst Throughput'=>'dst_addr_throughput',		 	 	 	
+				'Src RTT Avg'=>'src_addr_rtt_avg',		 	 	 	
+				'Dst RTT Avg'=>'dst_addr_rtt_avg'
+			)
+		),
+
+		'session'=>array(
+			'title'=>'Session',
+			'table'=>'con_ses',
+			'columns'=>array(
+				
+				'Proto'=>'prot_type',		   	 	 	 	 	 	 	 
+				'Session Start'=>'session_start',	   	 	 	 	 	 	 	 
+				'Session End'=>'session_end',		   	 	 	 	 	 	 	 
+				'Src IP'=>'src_ip_addr',		   	 	 	 	 	 	 	 
+				'Src Port'=>'src_port_addr',	   	 	 	 	 	 	 	 
+				'Src FQDN'=>'src_fqdn',		   	 	 	 	 	 	 	 
+				'Dest IP'=>'dst_ip_addr',		   	 	 	 	 	 	 	 
+				'Dest Port'=>'dst_port_addr',	   	 	 	 	 	 	 	 
+				'Dest FQDN'=>'dst_fqdn',		   	 	 	 	 	 	 	 
+				'Src Sent Byte'=>'src_sent_byte',		 	 	
+				'Dest Sent Byte'=>'dst_sent_byte',		 	 	
+				'Src Sent Packet'=>'src_sent_pkt',		 	 	
+				'Dest Sent Packet'=>'dst_sent_pkt'
+			)
+		)
+		
+	);
 
 	
 	$config['vdpi_application_menu']  = array(
@@ -301,7 +354,6 @@
 				'Time'=>'capture_date',
 				'Size'=>'data_size',
 				'Flow'=>'flow_info',
-				'Important'=>'important',
 				'User'=>'user',
 				'Friend'=>'friend',
 				'Chat'=>'chat',
