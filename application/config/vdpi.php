@@ -307,18 +307,20 @@
 				src_addr_actl_pkt	 	 	
 				dst_addr_actl_pkt	 	 	
 				src_addr_actl_byte	 	 	
-				dst_addr_actl_byte	 	 	
-				src_addr_ret_pkt	 	 	
-				dst_addr_ret_pkt	 	 	
-				src_addr_ret_byte	 	 	
-				dst_addr_ret_byte	 	 	
-				src_addr_syn_fin_sent			 	 	 	 	 	 	 
-				dst_addr_syn_fin_sent
-			*/			 	 	 	 	 	 	 
+				dst_addr_actl_byte
+			*/		 	 	
+				'Src Retansmit Packet'=>'src_addr_ret_pkt',	 	 	
+				'Dest Retansmit Packet'=>'dst_addr_ret_pkt',	 	 	
+				'Src Retansmit Byte'=>'src_addr_ret_byte',	 	 	
+				'Dest Retansmit Byte'=>'dst_addr_ret_byte',	 	 	
+				'Src Syn Fin Sent'=>'src_addr_syn_fin_sent',			 	 	 	 	 	 	 
+				'Dest Syn Fin Sent'=>'dst_addr_syn_fin_sent',
 				'Src Throughput'=>'src_addr_throughput',		 	 	 	
-				'Dst Throughput'=>'dst_addr_throughput',		 	 	 	
+				'Dest Throughput'=>'dst_addr_throughput',		 	 	 	
+				/*
 				'Src RTT Avg'=>'src_addr_rtt_avg',		 	 	 	
 				'Dst RTT Avg'=>'dst_addr_rtt_avg'
+				*/			 	 	 	 	 	 	 
 			)
 		),
 
