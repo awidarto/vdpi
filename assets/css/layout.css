@@ -214,7 +214,7 @@ body
 {
 	background: #F1F1F1;
 	width: 100%;
-	height: 90px;
+	height: 40px;
 	border-bottom: 1px solid #ccc;
 }
 
@@ -224,13 +224,13 @@ body
 		font-weight: normal;
 		color: #222;
 		position: relative;
-		top: 20px;
+		top: 5px;
 		margin-bottom: 1em;
 	}
 	
 		#masthead h1.no_breadcrumbs
 		{
-			top: 32px;
+			top: 10px;
 		}
 	
 	#masthead #bread_crumbs

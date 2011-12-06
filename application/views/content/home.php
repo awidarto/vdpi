@@ -3,11 +3,13 @@
 		var lasttimeftp = 0;
 		var lasttimearp = 0;
 		$(document).ready(function() {
+
+
 		    chart_http = new Highcharts.Chart({
 		        chart: {
 		            renderTo: 'container_http',
 		            events: {
-		                load: requestDataHTTP
+		                load: requestDataTCP
 		            }
 		        },
 		        title: {
@@ -91,6 +93,26 @@
 		    });
 		        
 		});
+
+		function requestDataTCP() {
+		    $.ajax({
+		        url: '<?=site_url('admin/home/sess');?>/'+lasttimehttp,
+		        success: function(point) {
+		            var series = chart_http.series[0],
+						
+		            shift = series.data.length > 60; // shift if the series is longer than 20
+					
+					lasttimehttp = point[0];
+		            // add the point
+		            chart_http.series[0].addPoint(point, true, shift);
+
+		            // call it again after one second
+		            setTimeout(requestDataTCP, 1000);    
+		        },
+		        cache: false
+		    });
+		}
+
 		
 		function requestDataHTTP() {
 		    $.ajax({

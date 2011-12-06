@@ -37,15 +37,15 @@ class Home extends Admin_Controller {
         //as is $the_user available in any view I load
         
         //print_r($this->the_user);
-        $this->tf_assets->set_content('home');
+        $this->tf_assets->set_content('dash_home');
         $this->tf_assets->render_layout();
         
     }
 
-	function sess($protocol,$column,$type,$lasttime = null){
+	function sess(){
 		
-		$query = $this->db->get('session_start,src_sent_byte+dst_sent_byte+src_sent_pkt+dst_sent_pkt as bw',20,0)->order_by('id','desc');
-		
+		$this->db->select('session_start,(src_sent_byte+dst_sent_byte+src_sent_pkt+dst_sent_pkt) as bw')->from('con_ses');
+		$query = $this->db->get();
 		
 		foreach($query->result() as $r){
 			$x[] = $r->session_start;

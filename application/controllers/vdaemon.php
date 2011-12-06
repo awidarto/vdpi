@@ -43,6 +43,7 @@ class vdaemon extends CI_Controller{
 	}
 	
 	function alert(){
+		//TODO : incorporate time interval
 		
 		$q = $this->db->get('thresholds');
 		//print_r($q->result());
