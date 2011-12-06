@@ -137,7 +137,8 @@ class Vdpi extends Admin_Controller {
 			->display_as('shot_type','Snapshot Type')
 			->display_as('time_interval','Time Interval (ms)')
 			->display_as('min','Min')
-			->display_as('max','Max');
+			->display_as('max','Max')
+			->display_as('thresholds','Recipients');
 
 		//$crud->fields('threshold_name','table_name','column_name','time_column_name','shot_type','time_interval','min','max');
 		
@@ -272,12 +273,11 @@ class Vdpi extends Admin_Controller {
 
 		$crud->set_subject('Setting');
 		
-		$crud->columns('skey','val_txt','val_int','name');
-		$crud->display_as('skey','Key')
+		$crud->columns('name','val_txt','val_int');
+		$crud->display_as('name','Name')
 			->display_as('val_txt','Text Value')
 			->display_as('val_int','Integer Value')
-			->display_as('name','Name')
-			;
+			->display_as('skey','Key');
 
 		$output = $crud->render(); 
 
