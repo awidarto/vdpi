@@ -20,3 +20,13 @@ script path :
 CRON entry example :
 */5 * * * /usr/bin/php /var/www/vdpi/index.php vdaemon alert
 
+2. Database Backup script :
+script path :
+{VDPI GUI INSTALL_DIR}/index.php vdaemon dbbackup
+-> This backup script creates backup of the whole database, saved as SQL dump, with option of two format, uncompressed and gziped
+
+CRON entry example :
+59 */12 * * /usr/bin/php /var/www/vdpi/index.php vdaemon dbbackup
+
+
+

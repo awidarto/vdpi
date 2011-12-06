@@ -48,13 +48,11 @@ class Home extends Admin_Controller {
 		$query = $this->db->get();
 		
 		foreach($query->result() as $r){
-			$x[] = $r->session_start;
-			$y[] = $r->bw;
+			$x[] = array($r->session_start,$r->bw);
 		}
 
 		// Create a PHP array and echo it as JSON
-		$ret = array($x, $y);
-		echo json_encode($ret);
+		echo json_encode($x);
 	}
 
 	function live($protocol,$column,$type,$lasttime = null){
