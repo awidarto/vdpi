@@ -128,20 +128,30 @@ class Vdpi extends Admin_Controller {
 
 		$crud->set_subject('Threshold');
 		
-		$crud->columns('threshold_name','table_name','column_name','is_sum','time_interval','min','max');
+		$crud->columns('threshold_name','table_name','column_name','time_column_name','shot_type','time_interval','min','max');
 		$crud->display_as('threshold_name','Name')
 			->display_as('column_name','Column')
+			->display_as('time_column_name','Time Column')
 			->display_as('table_name','Table')
-			->display_as('is_sum','Sum | ~Count')
+			//->display_as('is_sum','Sum | ~Count')
+			->display_as('shot_type','Snapshot Type')
 			->display_as('time_interval','Time Interval (ms)')
 			->display_as('min','Min')
 			->display_as('max','Max');
+
+		//$crud->fields('threshold_name','table_name','column_name','time_column_name','shot_type','time_interval','min','max');
 		
 		$crud->callback_add_field('table_name',array($this,'_table_names_add'));
 		$crud->callback_edit_field('table_name',array($this,'_table_names_edit'));
 
 		$crud->callback_add_field('column_name',array($this,'_column_names_add'));
 		$crud->callback_edit_field('column_name',array($this,'_column_names_edit'));
+
+		$crud->callback_add_field('shot_type',array($this,'_shot_type_add'));
+		$crud->callback_edit_field('shot_type',array($this,'_shot_type_edit'));
+
+		$crud->callback_add_field('time_column_name',array($this,'_time_column_names_add'));
+		$crud->callback_edit_field('time_column_name',array($this,'_time_column_names_edit'));
 		
 		$output = $crud->render(); 
 
@@ -182,6 +192,47 @@ class Vdpi extends Admin_Controller {
 	}
 
 	function _column_names_edit($value,$primary_key){
+		$menu_table = array_merge($this->config->item('vdpi_content_menu'),$this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_application_menu'));
+		$selections = array();
+		foreach($menu_table as $key=>$val){
+			foreach($val['columns'] as $key=>$val){
+				$selections[$val] = $key; 
+			}
+		}
+		return form_dropdown('time_column_name',array_unique($selections),$value);
+	}
+
+	function _shot_type_add(){
+		$selections = array(
+			'snapshot'=>'Snapshot',
+			'sum'=>'Sum',
+			'count'=>'Count'
+		);
+		return form_dropdown('shot_type',$selections);
+	}
+
+	function _shot_type_edit($value,$primary_key){
+		$selections = array(
+			'snapshot'=>'Snapshot',
+			'sum'=>'Sum',
+			'count'=>'Count'
+		);
+		return form_dropdown('shot_type',$selections,$value);
+	}
+
+
+	function _time_column_names_add(){
+		$menu_table = array_merge($this->config->item('vdpi_content_menu'),$this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_application_menu'));
+		$selections = array();
+		foreach($menu_table as $key=>$val){
+			foreach($val['columns'] as $key=>$val){
+				$selections[$val] = $key; 
+			}
+		}
+		return form_dropdown('time_column_name',array_unique($selections));
+	}
+
+	function _time_column_names_edit($value,$primary_key){
 		$menu_table = array_merge($this->config->item('vdpi_content_menu'),$this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_application_menu'));
 		$selections = array();
 		foreach($menu_table as $key=>$val){

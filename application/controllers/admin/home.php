@@ -42,6 +42,21 @@ class Home extends Admin_Controller {
         
     }
 
+	function sess($protocol,$column,$type,$lasttime = null){
+		
+		$query = $this->db->get('session_start,src_sent_byte+dst_sent_byte+src_sent_pkt+dst_sent_pkt as bw',20,0)->order_by('id','desc');
+		
+		
+		foreach($query->result() as $r){
+			$x[] = $r->session_start;
+			$y[] = $r->bw;
+		}
+
+		// Create a PHP array and echo it as JSON
+		$ret = array($x, $y);
+		echo json_encode($ret);
+	}
+
 	function live($protocol,$column,$type,$lasttime = null){
 
 		header("Content-type: text/json");

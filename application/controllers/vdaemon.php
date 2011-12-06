@@ -43,31 +43,74 @@ class vdaemon extends CI_Controller{
 	}
 	
 	function alert(){
-		$this->load->helper('vdpi_helper');
-		print get_setting('smtp_server')."\r\n".get_setting('smtp_port');
-		$config = Array(
-		    'protocol' => 'smtp',
-		    'smtp_host' => get_setting('smtp_server'),
-		    'smtp_port' => get_setting('smtp_port'),
-		    'smtp_user' => get_setting('smtp_user'),
-		    'smtp_pass' => get_setting('smtp_pass'),
-		    'charset'   => 'iso-8859-1'
-		);
 		
-		$this->load->library('email', $config);
-		$this->email->set_newline("\r\n");
+		$q = $this->db->get('thresholds');
+		//print_r($q->result());
+		foreach($q->result() as $r){
+			
+			/*
+			[id] => 2
+            [threshold_name] => Threshold 2
+            [app] => 1
+            [table_name] => arps
+            [column_name] => 
+            [is_sum] => 0
+            [time_interval] => 300000
+            [min] => 234
+            [max] => 10000
+			*/
+			
+			//print_r($r);
 
-		$this->email->from('admin@bigjava.com', 'VDPI Admin');
-		$this->email->to('andy.awidarto@bigjava.com'); 
+			if($r->table_name != '' && $r->column_name != ''){
+				if($r->shot_type == 'sum'){
+					$this->db->select_sum($r->column_name);
+					$this->db->where('packet_type',$r->table_name);
+					$query = $this->db->get('aggregates');
+					$val = $query->row();
+					$val = $val->{$r->column_name};
+				}elseif($r->shot_type == 'count'){
+					$this->db->where('packet_type',$r->table_name);
+					$this->db->from('aggregates');
+					$val = $this->db->count_all_results();
+					//$query = $this->db->get('aggregates');
+					//$val = $query->row();
+					//$val = $val->numrows;
+				}elseif($r->shot_type == 'snapshot'){
+					$this->db->select($r->column_name);
+					$this->db->where('packet_type',$r->table_name);
+					$query = $this->db->get('aggregates',1,0);
+					$val = $query->row();
+					$val = $val->{$r->column_name};
+				}
+				
+				//print_r($query->result());
+				
+				//print $this->db->last_query();
+				//print_r($query->result());
+				print "value : ".$val."\r\n";
+				if($val > $r->max || $val < $r->min){
+					
+					$this->db->select('users.email');
+					$this->db->from('users');
+					$this->db->join('threshold_users', 'users.id = threshold_users.user_id');
+					$this->db->where('threshold_users.threshold_id',$r->id);
+					$recs = $this->db->get();
 
-		$this->email->subject('Threshold Alert');
-		$this->email->message('Testing the email class.');	
-
-		if ( ! $this->email->send())
-		{
-		    print "Error sending mail\r\n";
+					//print($this->db->last_query());
+					
+					//print_r($recs->result());
+					
+					foreach($recs->result() as $rec){
+						$subject = 'VDPI Alert';
+						$body = sprintf('%s = %s, exceeding threshold ( min %s , max %s)',$r->table_name.':'.$r->column_name,$val,$r->min,$r->max);
+						$this->send_email($subject,$body,'admin@bigjava.com',$rec->email,null);
+					}
+					
+				}
+				
+			}
 		}
-		
 	}
 	
 	function report(){
@@ -92,6 +135,36 @@ class vdaemon extends CI_Controller{
 		$fileinfo = array('filename'=>$filename);
 		
 		$this->db->insert('backups',$fileinfo);
+		
+	}
+	
+	function send_email($subject,$body,$from,$to,$attachment_path = null){
+		$this->load->helper('vdpi_helper');
+		//print get_setting('smtp_server')."\r\n".get_setting('smtp_port');
+		$config = Array(
+		    'protocol' => 'smtp',
+		    'smtp_host' => get_setting('smtp_server'),
+		    'smtp_port' => get_setting('smtp_port'),
+		    'smtp_user' => get_setting('smtp_user'),
+		    'smtp_pass' => get_setting('smtp_pass'),
+		    'charset'   => 'iso-8859-1'
+		);
+		
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+
+		$this->email->from('admin@bigjava.com', 'VDPI Admin');
+		$this->email->to('andy.awidarto@bigjava.com'); 
+
+		$this->email->subject('Threshold Alert');
+		$this->email->message('Testing the email class.');	
+
+		if ( ! $this->email->send())
+		{
+		    return False;
+		}else{
+		    return True;
+		}
 		
 	}
 }
