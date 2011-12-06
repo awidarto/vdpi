@@ -11,7 +11,12 @@ The aggregates table needs to be populated periodically using cron task. the scr
 1. Aggregates table insert script :
 script path :
 {VDPI GUI INSTALL_DIR}/index.php vdaemon agg
+-> This is an infinite loop daemon script, need NO CRON
+
+2. Alerter script :
+script path :
+{VDPI GUI INSTALL_DIR}/index.php vdaemon alert
 
 CRON entry example :
-*/60 * * * /usr/bin/php /var/www/vdpi/index.php vdaemon agg
+*/5 * * * /usr/bin/php /var/www/vdpi/index.php vdaemon alert
 
