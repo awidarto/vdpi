@@ -91,8 +91,8 @@ class Reports extends Admin_Controller {
 		
 	}
 
-	function bw($proto){
-		$this->db->select("concat_ws(' ',substring(first_pkt,1,10),substring(substring_index(first_pkt,'.',1),11)) as packet_time,substring_index(first_pkt,'.',-1) as ms,sum(total_pkt) as total_pkt",false);
+	function bw($proto,$from = null, $to = null){
+		$this->db->select("substring_index(first_pkt, '.', 1 ) as packet_time,substring_index(first_pkt,'.',-1) as ms,sum(total_pkt) as total_pkt",false);
 		$this->db->group_by('packet_time');
 		$this->db->from('con_ret_rtt');
 		$this->db->where('prot_type',$proto);
@@ -129,7 +129,7 @@ class Reports extends Admin_Controller {
 		$graph->xaxis->SetTickLabels($x);
 		$graph->xaxis->SetLabelAngle(90);
 
-		$graph->yaxis->SetTitle('Byte (Avg.)','middle');
+		$graph->yaxis->SetTitle('Packet (Avg.)','middle');
 		$graph->yaxis->SetTitleMargin(60);
 		$graph->yaxis->HideLine(false);
 		$graph->yaxis->HideTicks(false,false);
@@ -148,6 +148,65 @@ class Reports extends Admin_Controller {
 		// Display the graph
 		$graph->Stroke();
 		
+	}
+	
+	function pie(){
+		
+		$this->db->select("substring_index(first_pkt, '.', 1 ) as packet_time,substring_index(first_pkt,'.',-1) as ms,sum(total_pkt) as total_pkt",false);
+		$this->db->group_by('packet_time');
+		$this->db->from('con_ret_rtt');
+		$this->db->where('prot_type',$proto);
+		$query = $this->db->get();
+		
+		//print $this->db->last_query();
+		
+		$out = array();
+		foreach($query->result_array() as $val){
+			//$out[] = array(mysql_to_unix($val['packet_time']),$val['total_pkt']);
+			$x[] = $val['packet_time'];
+			$y[] = $val['total_pkt'];
+		}
+		
+		//print json_encode($out);
+		
+		$opt = array(
+			'width'=>1000,
+			'height'=>600,
+			'scale'=>'auto'
+		);
+		
+		$graph = $this->jpgraph->Graph($opt);
+		$graph->SetScale("textlin");
+		$graph->SetMargin(80,60,50,180);
+
+		//$graph->yaxis->SetTickPositions(array(0,30,60,90,120,150), array(15,45,75,105,135));
+		$graph->SetBox(true);
+
+		$graph->ygrid->SetFill(false);
+		
+		$graph->xaxis->SetTitle('Time','middle');
+		$graph->xaxis->SetTitleMargin(150);
+		$graph->xaxis->SetTickLabels($x);
+		$graph->xaxis->SetLabelAngle(90);
+
+		$graph->yaxis->SetTitle('Packet (Avg.)','middle');
+		$graph->yaxis->SetTitleMargin(60);
+		$graph->yaxis->HideLine(false);
+		$graph->yaxis->HideTicks(false,false);
+
+		// Create the bar plots
+		$bplot = $this->jpgraph->linePlot($y);
+		// ...and add it to the graPH
+		$graph->Add($bplot);
+
+		$bplot->SetColor("white");
+		$bplot->SetFillColor("#cc1111");
+
+		$graph->title->Set(strtoupper($proto));
+		$graph->title->SetMargin(20);
+
+		// Display the graph
+		$graph->Stroke();
 	}
 
 

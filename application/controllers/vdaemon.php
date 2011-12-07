@@ -67,11 +67,19 @@ class vdaemon extends CI_Controller{
 				if($r->shot_type == 'sum'){
 					$this->db->select_sum($r->column_name);
 					$this->db->where('packet_type',$r->table_name);
+					
+					$timerange = sprintf("%s between %s and %s",$r->time_column_name,'unix_timestamp(now())','unix_timestamp(now()) - '.$r->time_interval);
+					$this->db->where($timerange);
+
 					$query = $this->db->get('aggregates');
 					$val = $query->row();
 					$val = $val->{$r->column_name};
 				}elseif($r->shot_type == 'count'){
 					$this->db->where('packet_type',$r->table_name);
+
+					$timerange = sprintf("unix_timestamp(%s) between unix_timestamp(%s) and (unix_timestamp(%s) - %s)",$r->time_column_name,'now()','now()',$r->time_interval);
+					$this->db->where($timerange);
+
 					$this->db->from('aggregates');
 					$val = $this->db->count_all_results();
 					//$query = $this->db->get('aggregates');
