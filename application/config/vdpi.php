@@ -36,10 +36,10 @@
 			'columns'=>array(
 				'Time'=>'capture_date',
 				'Host'=>'host',		 	 	 	 	 	 	 
-				'Content Type'=>'content_type', 	 	 	 	 	 	 
-				'URL'=>'url',
+				'Content Type'=>'content_type',
 				'Request Size'=>'rq_bd_size',
-				'Response Size' => 'rs_bd_size'
+				'Response Size' => 'rs_bd_size',	 	 	 	 	 	 
+				'URL'=>'url'
 			)
 		),
 		'arps'=>array(
