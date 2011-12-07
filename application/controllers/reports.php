@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class vdaemon extends CI_Controller{
+class reports extends CI_Controller{
     
     public function __construct()
     {
@@ -48,20 +48,6 @@ class vdaemon extends CI_Controller{
 		$q = $this->db->get('thresholds');
 		//print_r($q->result());
 		foreach($q->result() as $r){
-			
-			/*
-			[id] => 2
-            [threshold_name] => Threshold 2
-            [app] => 1
-            [table_name] => arps
-            [column_name] => 
-            [is_sum] => 0
-            [time_interval] => 300000
-            [min] => 234
-            [max] => 10000
-			*/
-			
-			//print_r($r);
 
 			if($r->table_name != '' && $r->column_name != ''){
 				if($r->shot_type == 'sum'){
@@ -104,16 +90,7 @@ class vdaemon extends CI_Controller{
 					
 					foreach($recs->result() as $rec){
 						$subject = 'VDPI Alert';
-						
-						$data['table_name'] = $r->table_name;
-						$data['column_name'] = $r->column_name;
-						$data['val'] = $val;
-						$data['min'] = $r->min;
-						$data['max'] = $r->max;
-						
-						$body = $this->load->view('alerts/threshold',$data);
-						
-						//$body = sprintf('%s = %s, exceeding threshold ( min %s , max %s)',$r->table_name.':'.$r->column_name,$val,$r->min,$r->max);
+						$body = sprintf('%s = %s, exceeding threshold ( min %s , max %s)',$r->table_name.':'.$r->column_name,$val,$r->min,$r->max);
 						$this->send_email($subject,$body,'admin@bigjava.com',$rec->email,null);
 					}
 					

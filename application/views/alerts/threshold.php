@@ -1,0 +1,1 @@
+<?php print $table_name.':'.$column_name; ?> = <?php print $val;?>, exceeding threshold ( min <?php print $min?> , max <?php print $min?>)
