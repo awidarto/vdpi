@@ -37,7 +37,9 @@
 				'Time'=>'capture_date',
 				'Host'=>'host',		 	 	 	 	 	 	 
 				'Content Type'=>'content_type', 	 	 	 	 	 	 
-				'URL'=>'url'
+				'URL'=>'url',
+				'Request Size'=>'rq_bd_size',
+				'Response Size' => 'rs_bd_size'
 			)
 		),
 		'arps'=>array(
@@ -71,8 +73,8 @@
 				'Username'=>'username',
 				'Password'=>'password',
 				'Command Path'=>'cmd_path',
-				'Upload'=>'upload_num',
-				'Download'=>'download_num'
+				'Total Upload'=>'upload_num',
+				'Total Download'=>'download_num'
 			)
 		),
 		'icmpv6s'=>array(
@@ -190,8 +192,8 @@
 				'Flow'=>'flow_info',
 				'URL'=>'url',
 				'Command Path'=>'cmd_path',
-				'Upload'=>'upload_num',
-				'Download'=>'download_num'
+				'Total Upload'=>'upload_num',
+				'Total Download'=>'download_num'
 			)
 		),
 		'mms'=>array(
@@ -441,7 +443,7 @@
 			)
 		),
 		'pjls'=>array(
-			'title'=>'Printer',
+			'title'=>'Printer Job',
 			'table'=>'pjls',
 			'columns'=>array(
 				'Time'=>'capture_date',
