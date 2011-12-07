@@ -1050,6 +1050,8 @@ class grocery_Layout extends grocery_Model_Driver
 		$data->unset_edit			= $this->unset_edit;
 		$data->unset_delete			= $this->unset_delete;
 		
+		$data->download_table		= $this->basic_db_table;
+		
 		if($data->list === false)
 		{
 			throw new Exception('It is impossible to get data. Please check your model and try again.', 13);

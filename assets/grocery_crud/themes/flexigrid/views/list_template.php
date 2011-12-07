@@ -28,9 +28,9 @@
 		</div>
 	</div>
 	<div id='main-table-box'>
-	<?php if(!$unset_add){?>
 	<div class="tDiv">
 		<div class="tDiv2">
+			<?php if(!$unset_add){?>
         	<a href='<?php echo $add_url?>' title='Add <?php echo $subject?>' class='add-anchor'>
 			<div class="fbutton">
 				<div>
@@ -39,11 +39,18 @@
 			</div>
             </a>
 			<div class="btnseparator">
+			<?php }?>
 			</div>
+        	<a href='<?php echo site_url('admin/reports/download/'.$download_table)?>' title='Download Data' class='add-anchor uribox fancybox.iframe'>
+			<div class="fbutton">
+				<div>
+					<span class="download">Download</span>
+				</div>
+			</div>
+            </a>
 		</div>
 		<div class='clear'></div>
 	</div>
-	<?php }?>
 	<div id='ajax_list'>
 		<?php echo $list_view?>
 	</div>

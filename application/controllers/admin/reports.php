@@ -71,6 +71,70 @@ class Reports extends Admin_Controller {
 		}
 	}
 	
+	function download($table_name){
+
+		$menu_table = array_merge($this->config->item('vdpi_content_menu'),$this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_application_menu'),$this->config->item('vdpi_bandwidth_menu'));
+		
+		$from = str_pad($this->input->post('from_year'),4,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('from_month'),2,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('from_day'),2,'0',STR_PAD_LEFT);
+		$to = str_pad($this->input->post('to_year'),4,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('to_month'),2,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('to_day'),2,'0',STR_PAD_LEFT);
+		
+		if($this->input->post('pdf') || $this->input->post('csv')){
+			
+			if($table_name == 'con_ses'){
+				$data['title'] = 'Session';
+			}else{
+				$data['title'] = 'RTT / Retransmit';
+			}
+			
+			$headers = array_keys($menu_table[$table_name]['columns']);
+			$columns = implode(',',array_values($menu_table[$table_name]['columns']));
+			
+			
+			$this->db->select($columns);
+			$this->db->from($table_name);
+			
+			$this->db->where(sprintf("unix_timestamp(capture_date) between unix_timestamp('%s') and unix_timestamp('%s')",$from,$to));
+			
+			$qres = $this->db->get();
+			
+			//print_r($qres->result());
+			
+			$this->table->set_heading($headers);
+			$html = $this->table->generate($qres);
+			
+			//print $this->db->last_query();
+			
+			if($this->input->post('pdf')){
+				
+				pdf_create($html, $table_name.'_'.time(),true);
+				
+				$tdld = 'PDF';
+			}elseif($this->input->post('csv')){
+				
+				$this->load->dbutil();
+
+				echo $this->dbutil->csv_from_result($qres);
+				
+				$tdld = 'CSV';
+			}
+			$data['message'] = sprintf('<p>Your %s download will be started in a jiffy...</p>',$tdld);
+		}else{
+			$data['message'] = false;
+		}
+		
+		$data['table_name'] = $table_name;
+		if($table_name == 'con_ses' || $table_name == 'con_ret_rtt'){
+			if($table_name == 'con_ses'){
+				$data['title'] = 'Session';
+			}else{
+				$data['title'] = 'RTT / Retransmit';
+			}
+		}else{
+			$data['title'] = $menu_table[$table_name]['title'];
+		}
+		$this->load->view('reports/download_data',$data);
+	}
+		
 	function bandwidth($proto){
 		$this->db->select("concat_ws(' ',substring(first_pkt,1,10),substring(substring_index(first_pkt,'.',1),11)) as packet_time,substring_index(first_pkt,'.',-1) as ms,sum(total_pkt) as total_pkt",false);
 		$this->db->group_by('packet_time');

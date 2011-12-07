@@ -189,6 +189,10 @@ table th
 	display:block;
 	padding:3px;
 }
+.flexigrid div.fbutton span.download {
+	background:url(images/load.png) no-repeat;
+	padding-left: 20px;
+}
 .flexigrid div.fbutton span.add {
 	background:url(images/add.png) no-repeat;
 	padding-left: 20px;
