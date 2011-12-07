@@ -96,6 +96,11 @@ class Reports extends Admin_Controller {
 		$this->db->group_by('packet_time');
 		$this->db->from('con_ret_rtt');
 		$this->db->where('prot_type',$proto);
+		
+		if($from != null){
+			
+		}
+		
 		$query = $this->db->get();
 		
 		//print $this->db->last_query();
