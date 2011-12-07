@@ -14,19 +14,23 @@ class Applications extends Admin_Controller {
     	$this->tf_assets->add_css('layout');
     	
 
+
     	$this->tf_assets->add_css('ui-darkness/jquery-ui-1.8.12.custom.css');
     	$this->tf_assets->add_css('plugin/jquery.visualize.css');
-    	$this->tf_assets->add_css('plugin/facebox.css');
+    	$this->tf_assets->add_css('plugin/jquery.fancybox.css');
+    	$this->tf_assets->add_css('helpers/jquery.fancybox-buttons.css');
+    	$this->tf_assets->add_css('helpers/jquery.fancybox-thumbs.css');
     	$this->tf_assets->add_css('plugin/uniform.default.css');
     	$this->tf_assets->add_css('plugin/dataTables.css');
     	$this->tf_assets->add_css('custom.css');
     	
         //$this->tf_assets->add_js('https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js', array('group' => 'top'));
-        $this->tf_assets->add_js('jquery/jquery-1.5.2.min.js', array('group' => 'top'));
+        $this->tf_assets->add_js('jquery/jquery-1.7.1.min.js', array('group' => 'top'));
         $this->tf_assets->add_js('highcharts/js/highcharts.js', array('group' => 'top'));
+        $this->tf_assets->add_js('fancybox/jquery.fancybox.js', array('group' => 'top'));
         
         $this->tf_assets->set_layout('dashboard');
-        $this->tf_assets->add_data('page_title', 'Welcome to Jayon Express');
+        $this->tf_assets->add_data('page_title', 'VDPI Manager');
     }
 
     function index($menu = 'webs') {
@@ -63,7 +67,7 @@ class Applications extends Admin_Controller {
 
 
 	function url_to_link($value,$row){
-		return anchor_popup('http://'.$value,$value,'target="_blank"');
+		return anchor_popup('http://'.$value,$value,'target="_blank" class="uribox fancybox.iframe"');
 	}
     
     function log() {

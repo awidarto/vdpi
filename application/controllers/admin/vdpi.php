@@ -16,14 +16,21 @@ class Vdpi extends Admin_Controller {
 
     	$this->tf_assets->add_css('ui-darkness/jquery-ui-1.8.12.custom.css');
     	$this->tf_assets->add_css('plugin/jquery.visualize.css');
-    	$this->tf_assets->add_css('plugin/facebox.css');
+    	$this->tf_assets->add_css('plugin/jquery.fancybox.css');
     	$this->tf_assets->add_css('plugin/uniform.default.css');
     	$this->tf_assets->add_css('plugin/dataTables.css');
     	$this->tf_assets->add_css('custom.css');
     	
         //$this->tf_assets->add_js('https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js', array('group' => 'top'));
-        $this->tf_assets->add_js('jquery/jquery-1.5.2.min.js', array('group' => 'top'));
+        $this->tf_assets->add_js('jquery/jquery-1.7.1.min.js', array('group' => 'top'));
         $this->tf_assets->add_js('highcharts/js/highcharts.js', array('group' => 'top'));
+        $this->tf_assets->add_js('fancybox/jquery.fancybox.js', array('group' => 'top'));
+
+        $this->tf_assets->add_js('fancybox/jquery.easing-1.3.pack.js', array('group' => 'top'));
+        $this->tf_assets->add_js('fancybox/jquery.fancybox-buttons.js', array('group' => 'top'));
+        $this->tf_assets->add_js('fancybox/jquery.fancybox-thumbs.js', array('group' => 'top'));
+        $this->tf_assets->add_js('fancybox/jquery.mousewheel-3.0.6.pack.js', array('group' => 'top'));
+
         
         $this->tf_assets->set_layout('dashboard');
         $this->tf_assets->add_data('page_title', 'Welcome to Jayon Express');
@@ -63,7 +70,7 @@ class Vdpi extends Admin_Controller {
     }
 
 	function url_to_link($value,$row){
-		return anchor('http://'.$value,$value,'target="_blank"');
+		return anchor('http://'.$value,$value,'target="_blank" class="uribox fancybox.iframe"');
 	}
 	
 	function aggregates() {

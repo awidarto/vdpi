@@ -11,15 +11,33 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head> 
 <script>
+	$(document).ready(function() {
+		$('.uribox').fancybox({
+			maxWidth	: 800,
+			maxHeight	: 600,
+			fitToView	: false,
+			width		: '70%',
+			height		: '70%',
+			autoSize	: false,
+			closeClick	: false,
+			openEffect	: 'elastic',
+	    	openEasing : 'easeOutBack',
+	    	closeEffect	: 'elastic',
+			closeEasing : 'easeInBack',
+		});
+	});
+	
 	function triggerRefresh(){
 		$('#ajax_refresh_and_loading').trigger('click');
-		setTimeout('triggerRefresh()', 1000);
+		//setTimeout('triggerRefresh()', 1000);
 	}
 	$(document).ready(function() {
 		if($('#ajax_refresh_and_loading').length > 0){
 			triggerRefresh();
 		}
 	});
+	
+	
 	
 </script>
  

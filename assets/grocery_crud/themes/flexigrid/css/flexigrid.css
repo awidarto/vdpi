@@ -699,6 +699,7 @@ textarea
 	margin-top: 10px;
 	display:none;
 	font-family: Arial,Helvetica,sans-serif;
+	background-color:white;
 }
 .report-div.success
 {
@@ -713,6 +714,7 @@ textarea
 .report-div.error
 {
 	border-color: red;
+	background-color:orange;
 }
 .report-div.error p
 {

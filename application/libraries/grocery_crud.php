@@ -1151,7 +1151,7 @@ class grocery_Layout extends grocery_Model_Driver
 	
 	protected function showAddForm()
 	{
-		$this->set_js('assets/grocery_crud/themes/datatables/js/jquery-1.6.2.min.js');
+		//$this->set_js('assets/grocery_crud/themes/datatables/js/jquery-1.6.2.min.js');
 		
 		$data 				= $this->get_common_data();
 		$data->types 		= $this->get_field_types();
@@ -1169,7 +1169,7 @@ class grocery_Layout extends grocery_Model_Driver
 	
 	protected function showEditForm($state_info)
 	{
-		$this->set_js('assets/grocery_crud/themes/datatables/js/jquery-1.6.2.min.js');
+		//$this->set_js('assets/grocery_crud/themes/datatables/js/jquery-1.6.2.min.js');
 		
 		$data 				= $this->get_common_data();
 		$data->types 		= $this->get_field_types();

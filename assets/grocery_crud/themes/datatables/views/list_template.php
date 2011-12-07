@@ -4,8 +4,8 @@
 	grocery_CRUD::set_css('assets/grocery_crud/themes/datatables/css/demo_table_jui.css');
 	grocery_CRUD::set_css('assets/grocery_crud/themes/datatables/css/ui/simple/jquery-ui-1.8.10.custom.css');
 	grocery_CRUD::set_css('assets/grocery_crud/themes/datatables/css/datatables.css');	
-	grocery_CRUD::set_js('assets/grocery_crud/themes/datatables/js/jquery-1.6.2.min.js');
-	grocery_CRUD::set_js('assets/grocery_crud/themes/datatables/js/jquery-ui-1.8.10.custom.min.js');
+	//grocery_CRUD::set_js('assets/grocery_crud/themes/datatables/js/jquery-1.6.2.min.js');
+	//grocery_CRUD::set_js('assets/grocery_crud/themes/datatables/js/jquery-ui-1.8.10.custom.min.js');
 	grocery_CRUD::set_js('assets/grocery_crud/themes/datatables/js/jquery.dataTables.min.js');
 	grocery_CRUD::set_js('assets/grocery_crud/themes/datatables/js/datatables.js');
 ?>
