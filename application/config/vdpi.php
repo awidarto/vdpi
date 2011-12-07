@@ -17,6 +17,11 @@
 * 
 */
 	$config['backup_dir'] = '/Applications/XAMPP/htdocs/vdpi/dbbackup/'; //modify this according to system
+
+	$config['report_docs_dir'] = '/Applications/XAMPP/htdocs/vdpi/reports/'; //modify this according to system
+
+	$config['image_tmp_dir'] = '/Applications/XAMPP/htdocs/vdpi/reports/images/'; //modify this according to system
+
 	
 	$config['backup_prefs'] = array(
 	                'format'      => 'txt',             // gzip,txt

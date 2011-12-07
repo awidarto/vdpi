@@ -213,7 +213,24 @@ class Reports extends Admin_Controller {
 		// Display the graph
 		$graph->Stroke();
 	}
+	
+	function testpdf(){
+		
+		$html =
+		  //'<html><body>'.
+		  '<p>Put your html here, or generate it with your favourite '.
+		  'templating system.</p>';
+		  //'</body></html>';
+		
+		$html = $this->load->view('pdf/bandwidth','',true);
+		
+		//print $html;
+		
 
+		
+		pdf_create($html, 'filename3',true);
+
+	}
 
 }
 

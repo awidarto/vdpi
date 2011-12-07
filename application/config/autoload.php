@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database', 'session', 'xmlrpc','table','ion_auth
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form','url','file','date');
+$autoload['helper'] = array('form','url','file','date','dompdf');
 
 
 /*
