@@ -68,7 +68,7 @@
 							<li class="<?php print set_hilite('admin\/vdpi\/settings$')?> nav_icon"><a href="<?php print site_url('admin/vdpi/settings');?>"><span class="ui-icon ui-icon-signal"></span>Settings</a></li>
 							<li class="<?php print set_hilite('admin\/vdpi\/thresholds$')?> nav_icon"><a href="<?php print site_url('admin/vdpi/thresholds');?>"><span class="ui-icon ui-icon-signal"></span>Thresholds</a></li>
 							<li class="<?php print set_hilite('admin\/vdpi\/periodicals$')?> nav_icon"><a href="<?php print site_url('admin/vdpi/periodicals');?>"><span class="ui-icon ui-icon-signal"></span>Scheduler</a></li>
-							<li class="<?php print set_hilite('admin\/vdpi\/reports')?> nav_icon"><a href="<?php print site_url('admin/vdpi/reports');?>"><span class="ui-icon ui-icon-signal"></span>Reports</a></li>
+							<li class="<?php print set_hilite('admin\/reports')?> nav_icon"><a href="<?php print site_url('admin/reports');?>"><span class="ui-icon ui-icon-signal"></span>Reports</a></li>
 							<li class="<?php print set_hilite('admin\/vdpi\/dbbackup')?> nav_icon"><a href="<?php print site_url('admin/vdpi/dbbackup');?>"><span class="ui-icon ui-icon-signal"></span>Back Up</a></li>
 						</ul>
 					</div> <!-- .menu -->
