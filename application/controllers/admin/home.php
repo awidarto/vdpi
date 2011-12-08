@@ -24,7 +24,9 @@ class Home extends Admin_Controller {
     	
         //$this->tf_assets->add_js('https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js', array('group' => 'top'));
         $this->tf_assets->add_js('jquery/jquery-1.7.1.min.js', array('group' => 'top'));
-        $this->tf_assets->add_js('highcharts/js/highcharts.js', array('group' => 'top'));
+        //$this->tf_assets->add_js('highcharts/js/highcharts.js', array('group' => 'top'));
+        //$this->tf_assets->add_js('highstock/js/highstock.js', array('group' => 'top'));
+        $this->tf_assets->add_js('flot/jquery.flot.js', array('group' => 'top'));
         $this->tf_assets->add_js('fancybox/jquery.fancybox.js', array('group' => 'top'));
         
         $this->tf_assets->set_layout('dashboard');
@@ -46,15 +48,59 @@ class Home extends Admin_Controller {
 
 	function sess(){
 		
-		$this->db->select('session_start,(src_sent_byte+dst_sent_byte+src_sent_pkt+dst_sent_pkt) as bw')->from('con_ses');
+		$this->db->select('unix_timestamp(session_start) as session_start,(src_sent_byte+dst_sent_byte+src_sent_pkt+dst_sent_pkt) as bw')->from('con_ses');
+		$this->db->limit(100);
+		$this->db->order_by('session_start','desc');
 		$query = $this->db->get();
-		
+		$xc = 0;
 		foreach($query->result() as $r){
-			$x[] = array($r->session_start,$r->bw);
+			
+			$dt = $r->session_start * 1000;
+			
+			$x[] = array($dt,(int)$r->bw);
+		}
+		
+		$sdata = array('label'=>'Session','data'=>$x);
+		// Create a PHP array and echo it as JSON
+		echo json_encode($sdata);
+	}
+
+	function ret(){
+		
+		$this->db->select('unix_timestamp(first_pkt) as session_start,(src_addr_ret_byte+dst_addr_ret_byte) as bw')->from('con_ret_rtt');
+		$this->db->limit(100);
+		$this->db->order_by('session_start','desc');
+		$query = $this->db->get();
+		$xc = 0;
+		foreach($query->result() as $r){
+			$dt = $r->session_start * 1000;
+			$x[] = array($dt,((int)$r->bw));
+		}
+		
+		$sdata = array('label'=>'Retransmit','data'=>$x);
+		// Create a PHP array and echo it as JSON
+		echo json_encode($sdata);
+	}
+
+	function combined(){
+		$this->db->select('unix_timestamp(session_start) as session_start,(src_sent_byte+dst_sent_byte+src_sent_pkt+dst_sent_pkt) as bw')->from('con_ses');
+		$this->db->limit(100);
+		$query = $this->db->get();
+		foreach($query->result() as $r){
+			$a[] = array($r->session_start,((int)$r->bw)/1000);
 		}
 
+		$this->db->select('unix_timestamp(first_pkt) as session_start,(src_addr_ret_byte+dst_addr_ret_byte) as bw')->from('con_ret_rtt');
+		$this->db->limit(200);
+		$this->db->order_by('session_start','desc');
+		$query = $this->db->get();
+		foreach($query->result() as $r){
+			$b[] = array($r->session_start,((int)$r->bw)/1000);
+		}
+		
+		$sdata = array(array('label'=>'Retransmit','data'=>$a),array('label'=>'Session','data'=>$b));
 		// Create a PHP array and echo it as JSON
-		echo json_encode($x);
+		echo json_encode($sdata);
 	}
 
 	function live($protocol,$column,$type,$lasttime = null){

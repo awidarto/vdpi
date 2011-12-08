@@ -29,7 +29,7 @@
 	
 	function triggerRefresh(){
 		$('#ajax_refresh_and_loading').trigger('click');
-		//setTimeout('triggerRefresh()', 1000);
+		setTimeout('triggerRefresh()', 1000);
 	}
 	$(document).ready(function() {
 		if($('#ajax_refresh_and_loading').length > 0){

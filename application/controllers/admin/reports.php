@@ -42,7 +42,10 @@ class Reports extends Admin_Controller {
 
     }
 
-    function index() {
+    function index($from = null,$to = null) {
+	
+		$this->tf_assets->add_data('from', $from);
+		$this->tf_assets->add_data('to', $to);
 		$this->tf_assets->set_content('report');
 		$this->tf_assets->render_layout();
     }
@@ -117,9 +120,15 @@ class Reports extends Admin_Controller {
 				$tdld = 'PDF';
 			}elseif($this->input->post('csv')){
 				
+				$this->load->helper('download');
+				
 				$this->load->dbutil();
 
-				echo $this->dbutil->csv_from_result($qres);
+				$csv = $this->dbutil->csv_from_result($qres);
+				
+				//print $csv;
+				
+				force_download($table_name.'_'.time().'.csv',$csv);
 				
 				$tdld = 'CSV';
 			}
@@ -168,7 +177,7 @@ class Reports extends Admin_Controller {
 		$this->db->where('prot_type',$proto);
 		
 		if($from != null){
-			
+			$this->db->where(sprintf("unix_timestamp(first_pkt) between unix_timestamp('%s') and unix_timestamp('%s')",$from,$to));
 		}
 		
 		$query = $this->db->get();
