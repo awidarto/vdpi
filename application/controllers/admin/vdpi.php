@@ -54,7 +54,8 @@ class Vdpi extends Admin_Controller {
 		}
 		
 		$crud->callback_column('url',array($this,'url_to_link'));
-		
+		$crud->callback_column('flow_info',array($this,'flowinfo_to_link'));
+
  		$crud->unset_add();
  		$crud->unset_edit();
  		$crud->unset_delete();
@@ -70,8 +71,24 @@ class Vdpi extends Admin_Controller {
     }
 
 	function url_to_link($value,$row){
-		return anchor('http://'.$value,$value,'target="_blank" class="uribox fancybox.iframe"');
+		if(strlen($value) < 80){
+			$displaylink = $value;
+		}else{
+			$displaylink = substr($value,0,80);
+		}
+		return anchor('http://'.$value,$displaylink,'target="_blank" class="uribox fancybox.iframe" alt="'.$value.'"');
 	}
+
+	function flowinfo_to_link($value,$row){
+		$displaylink = explode('/',$value);
+		$displaylink = $displaylink[count($displaylink) - 1];
+		
+		if(strlen($displaylink) > 80){
+			$displaylink = substr($value,0,80);
+		}
+		return anchor('http://'.$value,$displaylink,'target="_blank" class="uribox fancybox.iframe" alt="'.$value.'"');
+	}
+
 	
 	function aggregates() {
         $crud = new grocery_CRUD();
