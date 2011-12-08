@@ -107,8 +107,8 @@ class Vdpi extends Admin_Controller {
 			'hostname',
 			'data_size',
 			'cname',
-			'url',
-			'flow_info'
+			'flow_info',
+			'url'
 		);
 		$crud->display_as('packet_type','Traffic Type')
 			->display_as('capture_date','Timestamp')
@@ -123,6 +123,7 @@ class Vdpi extends Admin_Controller {
 		$crud->order_by('capture_date','desc');
 		
 		$crud->callback_column('url',array($this,'url_to_link'));
+		$crud->callback_column('flow_info',array($this,'flowinfo_to_link'));
 		
  		$crud->unset_add();
  		$crud->unset_edit();
