@@ -333,9 +333,9 @@
 				'Dest Syn Fin Sent'=>'dst_addr_syn_fin_sent',
 				'Src Throughput'=>'src_addr_throughput',		 	 	 	
 				'Dest Throughput'=>'dst_addr_throughput',		 	 	 	
-				/*
+				
 				'Src RTT Avg'=>'src_addr_rtt_avg',		 	 	 	
-				'Dst RTT Avg'=>'dst_addr_rtt_avg'
+				/*'Dst RTT Avg'=>'dst_addr_rtt_avg'
 				*/			 	 	 	 	 	 	 
 			)
 		),
