@@ -41,7 +41,7 @@
 			<div class="btnseparator">
 			</div>
 			<?php }?>
-			<?php if(!$download_table == 'aggregates'){?>
+			<?php if($download_table !== 'aggregates'){?>
         	<a href='<?php echo site_url('admin/reports/download/'.$download_table)?>' title='Download Data' class='add-anchor uribox fancybox.iframe'>
 			<div class="fbutton">
 				<div>
