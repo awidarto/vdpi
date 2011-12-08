@@ -20,14 +20,24 @@
 		$days[$i]=$i;
 	}
 	
+	for($i=1;$i<24;$i++){
+		$hours[]=$i;
+	}
+	for($i=1;$i<60;$i++){
+		$mins[]=$i;
+	}
+
 ?>
 <div style="padding:20px" id="dialog_box">
 <h3>Download <?php print $title;?></h3>
 <?php echo form_open('admin/reports/download/'.$table_name);?>
 	<?php echo form_hidden('table_name',$table_name);?>
-	
-	From (d/m/y) <?php echo form_dropdown('from_day',$days).' '.form_dropdown('from_month',$months).' '.form_dropdown('from_year',$years)?>
-	To (d/m/y) <?php echo form_dropdown('to_day',$days).' '.form_dropdown('to_month',$months).' '.form_dropdown('to_year',$years)?>
+	From (dd-mm-yyyy hh:mm:ss) <?php echo form_dropdown('from_day',$days).'-'.form_dropdown('from_month',$months).'-'.form_dropdown('from_year',$years)?>
+	<?php echo form_dropdown('from_hour',$hours).':'.form_dropdown('from_min',$mins).':'.form_dropdown('from_sec',$mins)?>
+	<br /><br />
+	To (dd-mm-yyyy hh:mm:ss) <?php echo form_dropdown('to_day',$days).'-'.form_dropdown('to_month',$months).'-'.form_dropdown('to_year',$years)?>
+	<?php echo form_dropdown('to_hour',$hours).':'.form_dropdown('to_min',$mins).':'.form_dropdown('to_sec',$mins)?>
+
 	<?php echo form_submit('pdf','PDF');?>
 	<?php echo form_submit('csv','CSV');?>
 <?php echo form_close();?>

@@ -6,6 +6,7 @@ if ( ! function_exists('pdf_create'))
 	    require_once("dompdf/dompdf_config.inc.php");
     
 	    $dompdf = new DOMPDF();
+		$dompdf->set_paper('A4','landscape');
 	    $dompdf->load_html($html);
 	    $dompdf->render();
 	    if ($stream) {

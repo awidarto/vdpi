@@ -75,8 +75,8 @@ class Reports extends Admin_Controller {
 
 		$menu_table = array_merge($this->config->item('vdpi_content_menu'),$this->config->item('vdpi_protocol_menu'),$this->config->item('vdpi_application_menu'),$this->config->item('vdpi_bandwidth_menu'));
 		
-		$from = str_pad($this->input->post('from_year'),4,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('from_month'),2,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('from_day'),2,'0',STR_PAD_LEFT);
-		$to = str_pad($this->input->post('to_year'),4,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('to_month'),2,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('to_day'),2,'0',STR_PAD_LEFT);
+		$from = str_pad($this->input->post('from_year'),4,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('from_month'),2,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('from_day'),2,'0',STR_PAD_LEFT).' '.str_pad($this->input->post('from_hour'),4,'0',STR_PAD_LEFT).':'.str_pad($this->input->post('from_min'),2,'0',STR_PAD_LEFT).':'.str_pad($this->input->post('from_sec'),2,'0',STR_PAD_LEFT);
+		$to = str_pad($this->input->post('to_year'),4,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('to_month'),2,'0',STR_PAD_LEFT).'-'.str_pad($this->input->post('to_day'),2,'0',STR_PAD_LEFT).' '.str_pad($this->input->post('to_hour'),4,'0',STR_PAD_LEFT).':'.str_pad($this->input->post('to_min'),2,'0',STR_PAD_LEFT).':'.str_pad($this->input->post('to_sec'),2,'0',STR_PAD_LEFT);
 		
 		if($this->input->post('pdf') || $this->input->post('csv')){
 			
@@ -100,11 +100,17 @@ class Reports extends Admin_Controller {
 			//print_r($qres->result());
 			
 			$this->table->set_heading($headers);
-			$html = $this->table->generate($qres);
+			$table = $this->table->generate($qres);
 			
 			//print $this->db->last_query();
 			
 			if($this->input->post('pdf')){
+				
+				$data['content'] = $table;
+				
+				$data['subtitle'] = 'Period : '.$from.' to '.$to;
+				
+				$html = $this->load->view('pdf/doc',$data,true);
 				
 				pdf_create($html, $table_name.'_'.time(),true);
 				
