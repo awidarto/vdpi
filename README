@@ -1,6 +1,6 @@
 INSTALLATION
 
-1. import sql/vdpi_db.sql into mysql, create vdpi_db database first
+1. import vdpi_db.sql into mysql, create vdpi_db database first
 2. set proper database credentials in application/config/databases.php
 3. that's it !
 
@@ -19,6 +19,7 @@ script path :
 
 CRON entry example :
 */5 * * * /usr/bin/php /var/www/vdpi/index.php vdaemon alert
+* * * * * /opt/vdpi/script/trace
 
 2. Database Backup script :
 script path :
