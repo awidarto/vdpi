@@ -79,7 +79,7 @@
 </div> <!-- #masthead -->	
 
 <div id="content" style="text-align:center;">
-	<div id="session" style="width:1000px;height:300px;margin:auto;padding-bottom:30px;"></div>
-	<div id="retransmit" style="width:1000px;height:300px;margin:auto;"></div>
+	<div id="session" style="width:1000px;height:200px;margin:auto;padding-bottom:30px;"></div>
+	<div id="retransmit" style="width:1000px;height:200px;margin:auto;"></div>
 </div> <!-- #content -->
 

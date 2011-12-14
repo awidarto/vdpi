@@ -55,6 +55,7 @@ class Home extends Admin_Controller {
 		$xc = 0;
 		foreach($query->result() as $r){
 			
+			//$dt = strtotime(date('Y-m-d h:i:s UTC',$r->session_start)) * 1000;
 			$dt = $r->session_start * 1000;
 			
 			$x[] = array($dt,(int)$r->bw);
