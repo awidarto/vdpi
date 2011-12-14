@@ -55,7 +55,7 @@ class Applications extends Admin_Controller {
 		}
 		
 		$crud->callback_column('url',array($this,'url_to_link'));
-		$crud->callback_column('flow_info',array($this,'flowinfo_to_link'));
+		//$crud->callback_column('flow_info',array($this,'flowinfo_to_link'));
 		
  		$crud->unset_add();
  		$crud->unset_edit();
@@ -83,11 +83,14 @@ class Applications extends Admin_Controller {
 	function flowinfo_to_link($value,$row){
 		$displaylink = explode('/',$value);
 		$displaylink = $displaylink[count($displaylink) - 1];
+
+		$dispanchor = 'flows/'.$displaylink;
 		
 		if(strlen($displaylink) > 80){
 			$displaylink = substr($value,0,80);
 		}
-		return anchor('http://'.$value,$displaylink,'target="_blank" class="uribox fancybox.iframe" alt="'.$value.'"');
+		return anchor($dispanchor,$displaylink,'target="_blank" class="uribox fancybox.iframe" alt="'.$value.'"');
+		//return anchor('http://'.$value,$displaylink,'target="_blank" class="uribox fancybox.iframe" alt="'.$value.'"');
 	}
 
 	

@@ -83,10 +83,13 @@ class Vdpi extends Admin_Controller {
 		$displaylink = explode('/',$value);
 		$displaylink = $displaylink[count($displaylink) - 1];
 		
+		$dispanchor = 'flows/'.$displaylink;
+		
 		if(strlen($displaylink) > 80){
 			$displaylink = substr($value,0,80);
 		}
-		return anchor('http://'.$value,$displaylink,'target="_blank" class="uribox fancybox.iframe" alt="'.$value.'"');
+		return anchor($dispanchor,$displaylink,'target="_blank" class="uribox fancybox.iframe" alt="'.$value.'"');
+		//return $displaylink;
 	}
 
 	
