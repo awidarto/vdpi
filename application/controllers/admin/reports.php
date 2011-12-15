@@ -177,7 +177,7 @@ class Reports extends Admin_Controller {
 		$this->db->where('prot_type',$proto);
 		
 		if($from != null){
-			$this->db->where(sprintf("unix_timestamp(first_pkt) between unix_timestamp('%s') and unix_timestamp('%s')",$from,$to));
+			$this->db->where(sprintf("unix_timestamp(first_pkt) between unix_timestamp('%s') and unix_timestamp('%s')",str_replace('%20',' ',$from),str_replace('%20',' ',$to)));
 		}
 		
 		$query = $this->db->get();
